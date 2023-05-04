@@ -1,0 +1,163 @@
+.top{
+  background-image: url("src/assets/aboutus/top.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 91%;
+  position: relative;
+}
+
+.slogan{
+  padding-top: 5%;
+  padding-left: 10%;
+  font-size: 3rem;
+  font-family: Verdana, serif;
+}
+
+.valori{
+  color: white;
+  justify-content: center;
+  min-height: 20%;
+  background-color: black;
+  padding-top: 5%;
+  text-align: center;
+}
+
+.images{
+  width: 70%;
+  height: 50%;
+  border-radius: 30px;
+}
+
+.valori-slogan{
+  font-size: 30px
+}
+
+.valori-item{
+  font-size: 20px
+}
+
+.feedback{
+  background-color: white;
+}
+
+.intro{
+  font-size: 25px;
+  font-weight: bold;
+  padding-left: 2%;
+  padding-top: 3%;
+  padding-bottom: 1%;
+}
+
+.right-side {
+  flex: 1 1 auto;
+}
+
+.more{
+  padding-left: 2%;
+  color: grey;
+  align-self: end;
+}
+
+.bottom{
+  width: 100%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+mat-card{
+  background-color: #D9D9D9;
+  width: 80%;
+  min-height: 90%;
+  padding: 10%;
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 5px;
+}
+
+.name{
+  font-weight: bolder;
+  align-self: end;
+}
+
+
+.form{
+  background-color: #D9D9D9;
+  min-height: 50%;
+  justify-content: center;
+  text-align: center;
+  display: grid;
+}
+
+input[type=text], textarea{
+  width: 35%;
+  padding: 1%;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+  font-size: 10px;
+}
+
+.btn {
+  width: 25%;
+  background-color: #0051CB;
+  border-radius: 10px;
+  font-size: 20px;
+  font-family: "Helvetica", sans-serif;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.btn:hover {
+  background-color: #130888
+}
+
+.font1{
+  padding-top: 4%;
+  padding-bottom: 2%;
+  font-size: 30px;
+}
+
+.font2{
+  padding-bottom: 2%;
+}
+
+.form-label{
+  padding-top: 1%;
+}
+
+.name-email{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.gdpr{
+  width: 100%;
+}
+
+.text{
+  width: 100%;
+}
+
+textarea{
+  width: 100%;
+  height: 100px;
+  padding-left: 3%;
+  padding-top: 2%;
+}
+
+.gdpr-text{
+  padding-top: 1%;
+  display: inline-block;
+}
+
+mat-radio-button{
+  padding-bottom: 1%;
+}

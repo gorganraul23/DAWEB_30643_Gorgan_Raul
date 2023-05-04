@@ -1,0 +1,63 @@
+<mat-toolbar class="mat-elevation-z4">
+
+  <img class="logo" src="./assets/header/logo.png" alt="logo of the agency">
+
+  <span class="right-side"></span>
+  <button mat-button class="btn" (click)="onClickHomeBtn()">Acas&#259;</button>
+  <button mat-button class="btn" (click)="onClickNoutatiBtn()">Nout&#259;&#355;i</button>
+  <button mat-button class="btn" (click)="onClickAboutUsBtn()">Despre noi</button>
+
+  <button mat-button class="btn1"
+          [matMenuTriggerFor]="menu1"
+          #menuTrigger1="matMenuTrigger"
+  >&#206;nchirieri
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </button>
+
+  <mat-menu #menu1="matMenu">
+    <button mat-menu-item (click)="onClickGars()">Garsoniere</button>
+    <button mat-menu-item (click)="onClickAp()">Apartamente</button>
+    <button mat-menu-item (click)="onClickCase()">Case</button>
+    <button mat-menu-item (click)="onClickSpBir()">Spa&#355;ii birouri</button>
+    <button mat-menu-item (click)="onClickSpCom()">Spa&#355;ii comerciale</button>
+  </mat-menu>
+
+  <button mat-button class="btn1" id="btn1"
+          [matMenuTriggerFor]="menu2"
+          #menuTrigger2="matMenuTrigger"
+  >V&#226;nz&#259;ri
+    <mat-icon>keyboard_arrow_down</mat-icon>
+  </button>
+
+  <mat-menu #menu2="matMenu" (mouseleave)="closeMenu(menuTrigger2)">
+    <button mat-menu-item (click)="onClickGarsVanz()">Garsoniere</button>
+    <button mat-menu-item (click)="onClickApVanz()">Apartamente</button>
+    <button mat-menu-item (click)="onClickCaseVanz()">Case</button>
+    <button mat-menu-item (click)="onClickSpBirVanz()">Spa&#355;ii birouri</button>
+    <button mat-menu-item (click)="onClickSpComVanz()">Spa&#355;ii comerciale</button>
+  </mat-menu>
+
+  <button mat-button class="btn" (click)="onClickContactBtn()">Contact</button>
+
+  <button mat-button class="account-btn" *ngIf="!auth_service.isAuthenticated()"
+          [matMenuTriggerFor]="menu3">
+    <mat-icon>perm_identity</mat-icon>
+    Contul meu</button>
+
+  <button mat-button class="account-btn" *ngIf="auth_service.isAuthenticated()"
+          [matMenuTriggerFor]="menu4">
+    <mat-icon>perm_identity</mat-icon>
+    Contul meu</button>
+
+
+  <mat-menu #menu3="matMenu">
+    <button mat-menu-item (click)="onClickLogin()">Intra in cont</button>
+    <button mat-menu-item (click)="onClickRegister()">Inregistreaza-te</button>
+  </mat-menu>
+
+  <mat-menu #menu4="matMenu">
+    <button mat-menu-item (click)="onClickProfileBtn()">Profilul tau</button>
+    <button mat-menu-item (click)="onClickLogout()">Logout</button>
+  </mat-menu>
+
+</mat-toolbar>

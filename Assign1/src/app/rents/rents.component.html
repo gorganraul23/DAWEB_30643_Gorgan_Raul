@@ -1,0 +1,388 @@
+<div>
+  <p class="header1">Inchirieri proprietati</p>
+</div>
+
+<app-filters></app-filters>
+
+<div class="type1" id="garsoniereinch">
+  <div>
+    <p class="header">Garsoniere</p>
+  </div>
+
+  <div class="row">
+
+    <div class="column-news" *ngIf="this.garsoniere_list.length == 0">
+      <p class="indisponible">Nu sunt garsoniere disponibile...</p>
+    </div>
+    <div class="column-news" *ngIf="this.garsoniere_list.length != 0">
+      <div class="inline" *ngFor="let gars of garsoniere_list | slice:0:isGarsExpanded? garsoniere_list.length: 8">
+        <mat-card id="small-card">
+
+          <img class="img" src="{{gars.img_path}}">
+          <div class="details">
+            <div>
+              <p class="price">{{gars.price}}</p>
+              <mat-icon>euro_symbol</mat-icon>
+              <button mat-raised-button class="btn-progr" (click)="openReservationDialog($event, gars)" *ngIf="!isAgent()">Programare</button>
+              <button mat-raised-button class="btn-progr" (click)="openCalendarDialog($event, gars)" *ngIf="isAgent()">Calendar</button>
+            </div>
+            <p class="describe">{{gars.description}}</p>
+            <div class="icon">
+              <mat-icon>aspect_ratio</mat-icon>
+              <p class="small-details">{{gars.square_meters}}</p>
+              <mat-icon>stairs</mat-icon>
+              <p class="small-details">{{gars.floor}}</p>
+            </div>
+            <p class="location">{{gars.city}}, {{gars.zone}}</p>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="more" *ngIf="this.garsoniere_list.length > 8">
+      <button mat-raised-button class="btn" (click)="isGarsExpanded = !isGarsExpanded" *ngIf="!isGarsExpanded">
+        Vezi mai mult...
+        <mat-icon>expand_more</mat-icon>
+      </button >
+      <button mat-raised-button class="btn" (click)="isGarsExpanded = !isGarsExpanded" *ngIf="isGarsExpanded">
+        Vezi mai putin...
+        <mat-icon>expand_less</mat-icon>
+      </button >
+    </div>
+  </div>
+</div>
+
+
+<div class="type2" id="ap1inch">
+  <div>
+    <p class="header">Apartamente cu 1 camera</p>
+  </div>
+
+  <div class="row">
+
+    <div class="column-news" *ngIf="this.ap1_list.length == 0">
+      <p class="indisponible">Nu sunt apartamente disponibile...</p>
+    </div>
+    <div class="column-news" *ngIf="this.ap1_list.length != 0">
+      <div class="inline" *ngFor="let ap of ap1_list | slice:0:isAp1Expanded? ap1_list.length: 8">
+        <mat-card id="small-card">
+
+          <img class="img" src="{{ap.img_path}}">
+          <div class="details">
+            <div>
+              <p class="price">{{ap.price}}</p>
+              <mat-icon>euro_symbol</mat-icon>
+              <button mat-raised-button class="btn-progr" (click)="openReservationDialog($event, ap)" *ngIf="!isAgent()">Programare</button>
+              <button mat-raised-button class="btn-progr" (click)="openCalendarDialog($event, ap)" *ngIf="isAgent()">Calendar</button>
+            </div>
+            <p class="describe">{{ap.description}}</p>
+            <div class="icon">
+              <mat-icon>aspect_ratio</mat-icon>
+              <p class="small-details">{{ap.square_meters}}</p>
+              <mat-icon>stairs</mat-icon>
+              <p class="small-details">{{ap.floor}}</p>
+            </div>
+            <p class="location">{{ap.city}}, {{ap.zone}}</p>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="more" *ngIf="this.ap1_list.length > 8">
+      <button mat-raised-button class="btn" (click)="isAp1Expanded = !isAp1Expanded" *ngIf="!isAp1Expanded">
+        Vezi mai mult...
+        <mat-icon>expand_more</mat-icon>
+      </button >
+      <button mat-raised-button class="btn" (click)="isAp1Expanded = !isAp1Expanded" *ngIf="!isAp1Expanded">
+        Vezi mai putin...
+        <mat-icon>expand_less</mat-icon>
+      </button >
+    </div>
+  </div>
+</div>
+
+
+<div class="type1" id="ap2inch">
+  <div>
+    <p class="header">Apartamente cu 2 camere</p>
+  </div>
+
+  <div class="row">
+
+    <div class="column-news" *ngIf="this.ap2_list.length == 0">
+      <p class="indisponible">Nu sunt apartamente disponibile...</p>
+    </div>
+    <div class="column-news" *ngIf="this.ap2_list.length != 0">
+      <div class="inline" *ngFor="let ap of ap2_list | slice:0:isAp2Expanded? ap2_list.length: 8">
+        <mat-card id="small-card">
+
+          <img class="img" src="{{ap.img_path}}">
+          <div class="details">
+            <div>
+              <p class="price">{{ap.price}}</p>
+              <mat-icon>euro_symbol</mat-icon>
+              <button mat-raised-button class="btn-progr" (click)="openReservationDialog($event, ap)" *ngIf="!isAgent()">Programare</button>
+              <button mat-raised-button class="btn-progr" (click)="openCalendarDialog($event, ap)" *ngIf="isAgent()">Calendar</button>
+            </div>
+            <p class="describe">{{ap.description}}</p>
+            <div class="icon">
+              <mat-icon>aspect_ratio</mat-icon>
+              <p class="small-details">{{ap.square_meters}}</p>
+              <mat-icon>stairs</mat-icon>
+              <p class="small-details">{{ap.floor}}</p>
+            </div>
+            <p class="location">{{ap.city}}, {{ap.zone}}</p>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="more" *ngIf="this.ap2_list.length > 8">
+      <button mat-raised-button class="btn" (click)="isAp2Expanded = !isAp2Expanded" *ngIf="!isAp2Expanded">
+        Vezi mai mult...
+        <mat-icon>expand_more</mat-icon>
+      </button >
+      <button mat-raised-button class="btn" (click)="isAp2Expanded = !isAp2Expanded" *ngIf="isAp2Expanded">
+        Vezi mai putin...
+        <mat-icon>expand_less</mat-icon>
+      </button >
+    </div>
+  </div>
+</div>
+
+
+<div class="type2" id="ap3inch">
+  <div>
+    <p class="header">Apartamente cu 3 camere</p>
+  </div>
+
+  <div class="row">
+
+    <div class="column-news" *ngIf="this.ap3_list.length == 0">
+      <p class="indisponible">Nu sunt apartamente disponibile...</p>
+    </div>
+    <div class="column-news" *ngIf="this.ap3_list.length != 0">
+      <div class="inline" *ngFor="let ap of ap3_list | slice:0:isAp3Expanded? ap3_list.length: 8">
+        <mat-card id="small-card">
+
+          <img class="img" src="{{ap.img_path}}">
+          <div class="details">
+            <div>
+              <p class="price">{{ap.price}}</p>
+              <mat-icon>euro_symbol</mat-icon>
+              <button mat-raised-button class="btn-progr" (click)="openReservationDialog($event, ap)" *ngIf="!isAgent()">Programare</button>
+              <button mat-raised-button class="btn-progr" (click)="openCalendarDialog($event, ap)" *ngIf="isAgent()">Calendar</button>
+            </div>
+            <p class="describe">{{ap.description}}</p>
+            <div class="icon">
+              <mat-icon>aspect_ratio</mat-icon>
+              <p class="small-details">{{ap.square_meters}}</p>
+              <mat-icon>stairs</mat-icon>
+              <p class="small-details">{{ap.floor}}</p>
+            </div>
+            <p class="location">{{ap.city}}, {{ap.zone}}</p>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="more" *ngIf="this.ap3_list.length > 8">
+      <button mat-raised-button class="btn" (click)="isAp3Expanded = !isAp3Expanded" *ngIf="!isAp3Expanded">
+        Vezi mai mult...
+        <mat-icon>expand_more</mat-icon>
+      </button >
+      <button mat-raised-button class="btn" (click)="isAp3Expanded = !isAp3Expanded" *ngIf="isAp3Expanded">
+        Vezi mai putin...
+        <mat-icon>expand_less</mat-icon>
+      </button >
+    </div>
+  </div>
+</div>
+
+
+<div class="type1" id="ap4inch">
+  <div>
+    <p class="header">Apartamente cu 4+ camere</p>
+  </div>
+
+  <div class="row">
+
+    <div class="column-news" *ngIf="this.ap4_list.length == 0">
+      <p class="indisponible">Nu sunt apartamente disponibile...</p>
+    </div>
+    <div class="column-news" *ngIf="this.ap4_list.length != 0">
+      <div class="inline" *ngFor="let ap of ap4_list | slice:0:isAp4Expanded? ap4_list.length: 8">
+        <mat-card id="small-card">
+
+          <img class="img" src="{{ap.img_path}}">
+          <div class="details">
+            <div>
+              <p class="price">{{ap.price}}</p>
+              <mat-icon>euro_symbol</mat-icon>
+              <button mat-raised-button class="btn-progr" (click)="openReservationDialog($event, ap)" *ngIf="!isAgent()">Programare</button>
+              <button mat-raised-button class="btn-progr" (click)="openCalendarDialog($event, ap)" *ngIf="isAgent()">Calendar</button>
+            </div>
+            <p class="describe">{{ap.description}}</p>
+            <div class="icon">
+              <mat-icon>aspect_ratio</mat-icon>
+              <p class="small-details">{{ap.square_meters}}</p>
+              <mat-icon>stairs</mat-icon>
+              <p class="small-details">{{ap.floor}}</p>
+            </div>
+            <p class="location">{{ap.city}}, {{ap.zone}}</p>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="more" *ngIf="this.ap4_list.length > 8">
+      <button mat-raised-button class="btn" (click)="isAp4Expanded = !isAp4Expanded" *ngIf="!isAp4Expanded">
+        Vezi mai mult...
+        <mat-icon>expand_more</mat-icon>
+      </button >
+      <button mat-raised-button class="btn" (click)="isAp4Expanded = !isAp4Expanded" *ngIf="isAp4Expanded">
+        Vezi mai putin...
+        <mat-icon>expand_less</mat-icon>
+      </button >
+    </div>
+  </div>
+</div>
+
+
+<div class="type2" id="caseinch">
+  <div>
+    <p class="header">Case de inchiriat</p>
+  </div>
+
+  <div class="row">
+
+    <div class="column-news" *ngIf="this.case_list.length == 0">
+      <p class="indisponible">Nu sunt case disponibile...</p>
+    </div>
+    <div class="column-news" *ngIf="this.case_list.length != 0">
+      <div class="inline" *ngFor="let casa of case_list | slice:0:isCasaExpanded? case_list.length: 8">
+        <mat-card id="small-card">
+
+          <img class="img" src="{{casa.img_path}}">
+          <div class="details">
+            <div>
+              <p class="price">{{casa.price}}</p>
+              <mat-icon>euro_symbol</mat-icon>
+              <button mat-raised-button class="btn-progr" (click)="openReservationDialog($event, casa)" *ngIf="!isAgent()">Programare</button>
+              <button mat-raised-button class="btn-progr" (click)="openCalendarDialog($event, casa)" *ngIf="isAgent()">Calendar</button>
+            </div>
+            <p class="describe">{{casa.description}}</p>
+            <div class="icon">
+              <mat-icon>aspect_ratio</mat-icon>
+              <p class="small-details">{{casa.square_meters}}</p>
+              <mat-icon>dashboard</mat-icon>
+              <p class="small-details">{{casa.rooms}}</p>
+            </div>
+            <p class="location">{{casa.city}}, {{casa.zone}}</p>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="more" *ngIf="this.case_list.length > 8">
+      <button mat-raised-button class="btn" (click)="isCasaExpanded = !isCasaExpanded" *ngIf="!isCasaExpanded">
+        Vezi mai mult...
+        <mat-icon>expand_more</mat-icon>
+      </button >
+      <button mat-raised-button class="btn" (click)="isCasaExpanded = !isCasaExpanded" *ngIf="isCasaExpanded">
+        Vezi mai putin...
+        <mat-icon>expand_less</mat-icon>
+      </button >
+    </div>
+  </div>
+</div>
+
+
+<div id="spbirinch" class="type1" >
+  <div>
+    <p class="header">Spatii birouri de inchiriat</p>
+  </div>
+
+  <div class="row">
+    <div class="column-news" *ngIf="this.sp_birouri_list.length == 0">
+      <p class="indisponible">Nu sunt spatii birouri disponibile...</p>
+    </div>
+
+    <div class="column-news" *ngIf="this.sp_birouri_list.length != 0">
+      <div class="inline" *ngFor="let sp_bir of sp_birouri_list | slice:0:isSpbirExpanded? sp_birouri_list.length: 8">
+        <mat-card id="small-card">
+
+          <img class="img" src="{{sp_bir.img_path}}">
+          <div class="details">
+            <div>
+              <p class="price">{{sp_bir.price}}</p>
+              <mat-icon>euro_symbol</mat-icon>
+              <button mat-raised-button class="btn-progr" (click)="openReservationDialog($event, sp_bir)" *ngIf="!isAgent()">Programare</button>
+              <button mat-raised-button class="btn-progr" (click)="openCalendarDialog($event, sp_bir)" *ngIf="isAgent()">Calendar</button>
+            </div>
+            <p class="describe">{{sp_bir.description}}</p>
+            <div class="icon">
+              <mat-icon>aspect_ratio</mat-icon>
+              <p class="small-details">{{sp_bir.square_meters}}</p>
+              <mat-icon>dashboard</mat-icon>
+              <p class="small-details">{{sp_bir.rooms}}</p>
+            </div>
+            <p class="location">{{sp_bir.city}}, {{sp_bir.zone}}</p>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="more" *ngIf="this.sp_birouri_list.length > 8">
+      <button mat-raised-button class="btn" (click)="isSpbirExpanded = !isSpbirExpanded" *ngIf="!isSpbirExpanded">
+        Vezi mai mult...
+        <mat-icon>expand_more</mat-icon>
+      </button >
+      <button mat-raised-button class="btn" (click)="isSpbirExpanded = !isSpbirExpanded" *ngIf="isSpbirExpanded">
+        Vezi mai putin...
+        <mat-icon>expand_less</mat-icon>
+      </button >
+    </div>
+  </div>
+</div>
+
+
+<div class="type2" id="spcominch">
+  <div>
+    <p class="header">Spatii comerciale de inchiriat</p>
+  </div>
+
+  <div class="row">
+
+    <div class="column-news" *ngIf="this.sp_comerciale_list.length == 0">
+      <p class="indisponible">Nu sunt spatii comerciale disponibile...</p>
+    </div>
+    <div class="column-news" *ngIf="this.sp_comerciale_list.length != 0">
+      <div class="inline" *ngFor="let sp_com of sp_comerciale_list | slice:0:isSpcomxpanded? sp_comerciale_list.length: 8">
+        <mat-card id="small-card">
+
+          <img class="img" src="{{sp_com.img_path}}">
+          <div class="details">
+            <div>
+              <p class="price">{{sp_com.price}}</p>
+              <mat-icon>euro_symbol</mat-icon>
+              <button mat-raised-button class="btn-progr" (click)="openReservationDialog($event, sp_com)" *ngIf="!isAgent()">Programare</button>
+              <button mat-raised-button class="btn-progr" (click)="openCalendarDialog($event, sp_com)" *ngIf="isAgent()">Calendar</button>
+            </div>
+            <p class="describe">{{sp_com.description}}</p>
+            <div class="icon">
+              <mat-icon>aspect_ratio</mat-icon>
+              <p class="small-details">{{sp_com.square_meters}}</p>
+              <mat-icon>dashboard</mat-icon>
+              <p class="small-details">{{sp_com.rooms}}</p>
+            </div>
+            <p class="location">{{sp_com.city}}, {{sp_com.zone}}</p>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+    <div class="more" *ngIf="this.sp_comerciale_list.length > 8">
+      <button mat-raised-button class="btn" (click)="isSpcomxpanded = !isSpcomxpanded" *ngIf="!isSpcomxpanded">
+        Vezi mai mult...
+        <mat-icon>expand_more</mat-icon>
+      </button >
+      <button mat-raised-button class="btn" (click)="isSpcomxpanded = !isSpcomxpanded" *ngIf="isSpcomxpanded">
+        Vezi mai putin...
+        <mat-icon>expand_less</mat-icon>
+      </button >
+    </div>
+  </div>
+</div>

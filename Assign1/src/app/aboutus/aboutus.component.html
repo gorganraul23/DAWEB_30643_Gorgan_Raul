@@ -1,0 +1,88 @@
+<div class="top">
+  <p class="slogan">Noi suntem cheia noii tale locuințe</p>
+</div>
+
+<div class="valori">
+  <p class="valori-slogan">Valorile noastre</p>
+  <mat-grid-list cols="4">
+
+    <mat-grid-tile>
+      <div>
+        <img class="images" src="assets/aboutus/1.png">
+        <p class="valori-item">Încredere</p>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div>
+        <img class="images" src="assets/aboutus/2.png">
+        <p class="valori-item">Profesionalism</p>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div>
+        <img class="images" src="assets/aboutus/3.png">
+        <p class="valori-item">Integritate</p>
+      </div>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <div>
+        <img class="images" src="assets/aboutus/4.png">
+        <p class="valori-item">Calitate</p>
+      </div>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+</div>
+
+
+<div id="feedback" class="feedback">
+
+  <p class="intro">Ce spun clientii nostri</p>
+
+  <mat-grid-list cols="4">
+    <mat-grid-tile *ngFor="let feedback of feedbacks">
+
+      <mat-card>
+        <p>{{feedback.message}}</p>
+        <p class="name">~ {{feedback.name}}</p>
+      </mat-card>
+
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div class="bottom">
+    <span class="right-side"></span>
+    <p class="more">Mai multe...</p>
+  </div>
+</div>
+
+
+<div class="form">
+  <p class="font1">Scrie-ne un feedback</p>
+  <p class="font2">Parerea ta conteaza foarte mult pentru noi! Te rugam sa ne comunici
+    orice sfat, recomandare, multumire sau nemultumire pe care o ai.</p>
+
+  <div class="name-email">
+    <label class="form-label">Nume si Prenume</label>
+    <input type="text" id="name" name="name">
+    <label class="form-label">Email</label>
+    <input type="text" id="email" name="email">
+  </div>
+
+  <div class="text">
+    <textarea placeholder="Scrie-ne feedback-ul..."></textarea>
+  </div>
+
+  <div class="gdpr">
+    <mat-radio-button></mat-radio-button>
+    <p class="gdpr-text">Sunt de acord ca datele mele să fie prelucrate de RA Imobiliare pentru identificarea
+      feedback-ului iar acesta să fie afișat în site. *</p>
+  </div>
+
+  <div>
+    <button mat-raised-button class="btn">Trimite</button>
+  </div>
+</div>

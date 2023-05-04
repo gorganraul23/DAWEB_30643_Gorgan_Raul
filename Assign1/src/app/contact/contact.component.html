@@ -1,0 +1,57 @@
+<div>
+  <div class="address">
+    <p class="address-line1">Sediul RA Imobiliare</p>
+    <p class="address-line2">Strada Pandurilor, nr. 10</p>
+    <p class="address-line2">Cluj-Napoca</p>
+    <p class="address-last-line">0741 316 184</p>
+  </div>
+
+  <div class="map">
+    <agm-map
+      [latitude]="lat"
+      [longitude]="long"
+      [mapTypeId]="mapType"
+      [zoom]="zoom"
+    >
+
+      <agm-marker
+        *ngFor="let marker of markers"
+        [latitude]="marker.lat"
+        [longitude]="marker.lng"
+        [opacity]="marker.alpha"
+      ></agm-marker>
+
+    </agm-map>
+  </div>
+
+
+  <div class="contact-us">
+
+    <span class="right-side"></span>
+
+    <div class="form">
+      <div class="contact-title">
+        <label>CONTACTEAZA-NE</label>
+      </div>
+
+      <div class="form-new">
+        <form>
+          <label class="form-label" for="name">Nume si Prenume</label>
+          <input type="text" id="name" name="name">
+
+          <label class="form-label" for="email">Email</label>
+          <input type="text" id="email" name="email">
+
+          <label class="form-label">Mesaj</label>
+          <textarea></textarea>
+
+          <div class="button">
+            <input type="submit" value="Trimite">
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+

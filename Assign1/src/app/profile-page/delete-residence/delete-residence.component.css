@@ -1,0 +1,26 @@
+.delete-item-dialog-title{
+  color: #294166;
+}
+
+.mat-dialog-title {
+  border-bottom: 2px solid #FFA6AD
+}
+
+.delete-device-button {
+  background-color: #294166;
+  border-radius: 3px;
+  color: #FFFFFF;
+  width: 125px;
+}
+
+.cancel-button{
+  color: #294166;
+}
+
+.dialog-content{
+  color: #3E5F8D;
+}
+
+.container{
+  padding: 20px;
+}

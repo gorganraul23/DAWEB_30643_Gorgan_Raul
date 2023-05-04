@@ -1,0 +1,154 @@
+.type1, .type2{
+  background-color: #D9D9D9;
+  width: 100%;
+  min-height: 40%;
+}
+
+.type2{
+  background-color:#BEBDBD;
+}
+
+.header, .header1{
+  font-size: 40px;
+  padding-top: 2%;
+  padding-left: 5%;
+  padding-bottom: 1%;
+}
+.header{
+  padding-top: 3%;
+  padding-bottom: 0;
+}
+
+.column1{
+  width: 10%;
+  display: inline-block;
+  text-align: center;
+}
+
+.column2{
+  display: inline-flex;
+  width: 80%;
+  padding-top: 4%;
+  padding-bottom: 6%;
+  justify-content: space-around;
+}
+
+.row{
+  width: 100%;
+  display: inline-grid;
+}
+
+mat-card{
+  width: 450px;
+  height: 430px;
+}
+
+.img{
+  min-height: 60%;
+  width: 100%;
+}
+
+.inline, .price, .small-details{
+  display: inline-block;
+}
+.inline{
+  flex: 1 0 21%;
+  margin: 5px;
+  padding-top: 0.5%;
+}
+
+#arrow, #arrow2{
+  scale: 1.5;
+}
+
+.price{
+  font-size: 2rem;
+  margin-right: 2%;
+  margin-bottom: 3%;
+}
+
+.details{
+  padding-left: 4%;
+  padding-top: 4%;
+  width: 90%;
+  height: 100%;
+}
+
+.details-right{
+  width: 10%;
+  padding-top: 4%;
+  height: 100%;
+  display: inline-flex;
+}
+
+.describe, .location{
+  font-size: 1.2rem;
+}
+.small-details{
+  font-size: 1rem;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.location{
+  color: grey;
+}
+
+.icon{
+  display: flex;
+  align-items: flex-start;
+}
+
+#small-card{
+  width: 350px;
+  height: 400px;
+}
+
+.column-news, .column-news-empty{
+  padding: 2%;
+  justify-content: space-between;
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: auto auto auto auto;
+}
+.column-news-empty{
+  grid-template-columns: auto;
+}
+
+.btn{
+  width: 15%;
+  background-color: white;
+  border-radius: 20px;
+  font-size: 15px;
+  font-family: "Helvetica", sans-serif;
+  color: black;
+  padding: 10px 10px;
+  border: none;
+  margin-bottom: 2%;
+}
+
+.btn-progr{
+  background-color: #0051CB;
+  width: 80px;
+  height: 25px;
+  border-radius: 10px;
+  color: white;
+  font-size: 0.7rem;
+  margin-top: 1%;
+  float: right;
+}
+
+.btn:hover {
+  background-color: #888888;
+}
+
+.more{
+  width: 100%;
+  text-align: center;
+}
+
+.indisponible{
+  font-size: 1.3rem;
+  padding-left: 3.5%;
+}
+
+

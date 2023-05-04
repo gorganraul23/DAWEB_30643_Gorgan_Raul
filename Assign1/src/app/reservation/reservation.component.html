@@ -1,0 +1,83 @@
+<div class="form-container">
+  <div class="title">
+    <label>Programare vizita</label>
+  </div>
+
+  <div class="form">
+    <form>
+      <div>
+        <label class="form-label" for="tran_type">Tipul tranzactiei</label>
+        <div><select id="tran_type" [(ngModel)]="locuinta.transaction_type" disabled name="tran_type">
+          <option *ngFor="let id of trasactionTypes" [ngValue]="id">
+            {{ transactionTypesLabels[id] }}
+          </option>
+        </select></div>
+      </div>
+      <div>
+        <label class="form-label" for="type">Tipul locuintei</label>
+        <div><select id="type" [(ngModel)]="locuinta.type" disabled name="type">
+          <option *ngFor="let id of types" [ngValue]="id">
+            {{ typesLabels[id] }}
+          </option>
+        </select></div>
+      </div>
+
+      <div class="item">
+        <label class="form-label">Descriere:</label>
+        <label class="text-label"> {{locuinta.description}}</label>
+      </div>
+
+      <div class="item">
+        <label class="form-label">Suprafata:</label>
+        <label class="text-label"> {{locuinta.square_meters}} mp</label>
+      </div>
+
+      <div class="item">
+        <label class="form-label">Adresa:</label>
+        <label class="text-label"> {{locuinta.city}}, {{locuinta.zone}}</label>
+      </div>
+
+      <div class="item"
+           *ngIf="locuinta.type == 1 || locuinta.type == 2 || locuinta.type == 3 || locuinta.type == 4 || locuinta.type == 5">
+        <label class="form-label">Etaj:</label>
+        <label class="text-label"> {{locuinta.floor}}</label>
+      </div>
+      <div class="item" *ngIf="locuinta.type == 6 || locuinta.type == 7 || locuinta.type == 8">
+        <label class="form-label">Numar camere:</label>
+        <label class="text-label"> {{locuinta.rooms}}</label>
+      </div>
+
+      <div class="item">
+        <label class="form-label">Pret:</label>
+        <label class="text-label"> {{locuinta.price}}</label>
+      </div>
+
+      <div class="picker-container">
+        <div class="picker-label">
+          <label>Selectati o data si ora:</label>
+        </div>
+        <ejs-datetimepicker
+          placeholder="Alege o data si ora"
+          [min]="minDate"
+          [enableMask]="true"
+          [format]="'dd/MM/yyyy hh:mm a'"
+          [(ngModel)]='selectedDate'
+          name="picker"
+          (valueChange)="onDateSelected($event)"
+          [step]="30">
+        </ejs-datetimepicker>
+        <div class="message" *ngIf="message.length != 0">
+          <label>{{this.message}}</label>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+  <div class="title">
+    <button mat-button class="edit-btn" (click)="save()" [disabled]="!okToSave">
+      <mat-icon>save</mat-icon>
+      Efectueaza programarea
+    </button>
+  </div>
+</div>

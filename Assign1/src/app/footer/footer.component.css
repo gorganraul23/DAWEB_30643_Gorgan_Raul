@@ -1,0 +1,31 @@
+.copyright{
+  background-color: black;
+  color: white;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 1%;
+}
+
+.logo{
+  max-width: 60%;
+  max-height: 60%;
+  margin-left: 1%;
+}
+
+mat-grid-tile{
+  color: white;
+}
+
+.item{
+  font-size: 1rem;
+}
+
+.top, .contact{
+  margin-top: 15%;
+  font-size: 1.5rem;
+  margin-bottom: 30%;
+}
+
+.contact{
+  margin-top: -25%;
+}

@@ -1,0 +1,53 @@
+<div class="form-container">
+  <div class="title">
+    <label>Modifica anuntul</label>
+  </div>
+
+  <div class="form">
+    <form [formGroup]="form">
+      <div>
+        <select id="transaction_type" [formControl]="form.controls.transaction_type">
+          <option *ngFor="let id of trasactionTypes" [ngValue]="id">
+            {{ transactionTypesLabels[id] }}
+          </option>
+        </select>
+      </div>
+
+      <div>
+        <label class="form-label" for="descriere">Descriere</label>
+        <div><input type="text" id="descriere" [formControl]="form.controls.description" name="descriere"></div>
+      </div>
+      <div>
+        <label class="form-label" for="suprafata">Suprafata</label>
+        <div><input type="text" id="suprafata" [formControl]="form.controls.square_meters" name="suprafata"></div>
+      </div>
+      <div>
+        <label class="form-label" for="oras">Oras</label>
+        <div><input type="text" id="oras" [formControl]="form.controls.city" name="oras"></div>
+      </div>
+      <div>
+        <label class="form-label" for="zona">Zona</label>
+        <div><input type="text" id="zona" [formControl]="form.controls.zone" name="zona"></div>
+      </div>
+
+      <div *ngIf="locuinta.type == 1 || locuinta.type == 2 || locuinta.type == 3 || locuinta.type == 4 || locuinta.type == 5">
+        <label class="form-label" for="etaj">Etaj</label>
+        <div><input type="text" id="etaj" [formControl]="form.controls.floor" name="etaj"></div>
+      </div>
+      <div *ngIf="locuinta.type == 6 || locuinta.type == 7 || locuinta.type == 8">
+        <label class="form-label" for="camere">Numar Camere</label>
+        <div><input type="text" id="camere" [formControl]="form.controls.rooms" name="camere">
+        </div>
+      </div>
+      <div>
+        <label class="form-label" for="pret">Pret</label>
+        <div><input type="text" id="pret" [formControl]="form.controls.price" name="pret"></div>
+      </div>
+
+      <button mat-button class="edit-btn" (click)="save()">
+        <mat-icon>save</mat-icon>
+        Salveaza
+      </button>
+    </form>
+  </div>
+</div>

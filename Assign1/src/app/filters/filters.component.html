@@ -1,0 +1,57 @@
+<div class="container">
+  <p class="top">Filtre</p>
+
+  <div class="row">
+    <div class="column-news">
+      <select>
+        <option *ngFor="let type of types" [value]="type">
+          {{type}}
+        </option>
+      </select>
+    </div>
+    <div class="column-news">
+      <select>
+        <option *ngFor="let propr of propertyTypes" [value]="propr">
+          {{propr}}
+        </option>
+      </select>
+    </div>
+    <div class="column-news">
+      <select>
+        <option *ngFor="let loc of locations" [value]="loc">
+          {{loc}}
+        </option>
+      </select>
+    </div>
+    <div class="column-news">
+        <select>
+          <option *ngFor="let zone of zones" [value]="zone">
+            {{zone}}
+          </option>
+        </select>
+    </div>
+  </div>
+
+  <div class="row1">
+    <div class="column-news">
+      <label class="form-label">Pret</label>
+      <input type="text" id="pret_from" name="pret_from" placeholder="De la">
+      <input type="text" id="pret_to" name="pret_to" placeholder="Pana la">
+    </div>
+    <div class="column-news">
+      <label class="form-label">Suprafata</label>
+      <input type="text" id="supr_from" name="name" placeholder="De la">
+      <input type="text" id="supr_to" name="name" placeholder="Pana la">
+    </div>
+    <div class="column-news">
+      <label class="form-label">Numar camere</label>
+      <input type="text" id="cam_from" name="name" placeholder="De la">
+      <input type="text" id="cam_to" name="name" placeholder="Pana la">
+    </div>
+    <div class="column-news">
+      <button mat-raised-button class="btn">Cauta</button>
+    </div>
+  </div>
+
+
+</div>

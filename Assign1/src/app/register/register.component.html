@@ -1,0 +1,38 @@
+<div class="container">
+
+  <div class="left">
+  </div>
+
+  <div class="right">
+    <div class="form-container">
+      <div class="welcome">
+        <label>Bine ai venit!</label>
+      </div>
+      <div class="title">
+        <label>Inregistreaza-te</label>
+      </div>
+
+      <div class="form">
+        <form>
+          <label class="form-label" for="name">Nume si Prenume</label>
+          <input type="text" id="name" name="name" [(ngModel)]="this.user.name">
+
+          <label class="form-label" for="email">Email</label>
+          <input type="text" id="email" name="email" [(ngModel)]="this.user.email">
+
+          <label class="form-label" for="password">Password</label>
+          <input type="password" id="password" name="password" [(ngModel)]="this.user.password">
+
+          <div class="button">
+            <input type="submit" value="Continua" (click)="register()">
+          </div>
+          <div class="button">
+            <label class="form-label">Ai deja cont? Intra in <a href="/login">cont</a></label>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+</div>

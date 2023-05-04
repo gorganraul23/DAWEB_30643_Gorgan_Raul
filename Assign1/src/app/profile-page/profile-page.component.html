@@ -1,0 +1,353 @@
+<div class="container">
+
+  <div class="left">
+
+    <div class="left-menu">
+
+      <div class="circle">
+        <p class="initials">{{ this.getInitials(user.name) }}</p>
+      </div>
+
+      <div class="button-logout">
+        <p class="name-label">{{user.name}}</p>
+        <button mat-button class="logout-btn" (click)="onClickLogout()">
+          Logout
+        </button>
+      </div>
+
+      <div class="menu-item">
+        <mat-list>
+
+          <mat-list-item class="menu-item" (click)="onClickMyProfile()">
+            <div class="inline">
+              <mat-icon>account_circle</mat-icon>
+              <p [ngClass]="this.isMyProfileSelected ? 'selected' : 'not-selected'">Profilul meu</p></div>
+          </mat-list-item>
+
+          <mat-divider></mat-divider>
+
+          <mat-list-item class="menu-item" (click)="onClickMyOffers()" *ngIf="isAgent()">
+            <div class="inline">
+              <mat-icon>local_offer</mat-icon>
+              <p [ngClass]="this.isMyOffersSelected ? 'selected' : 'not-selected'">Anunturile mele</p></div>
+          </mat-list-item>
+
+          <mat-divider></mat-divider>
+
+          <mat-list-item class="menu-item" (click)="onClickFavorites()" *ngIf="!isAgent()">
+            <div class="inline">
+              <mat-icon>favorite</mat-icon>
+              <p [ngClass]="this.isFavoriteSelected ? 'selected' : 'not-selected'">Favorite</p></div>
+          </mat-list-item>
+
+          <mat-divider></mat-divider>
+
+          <mat-list-item class="menu-item" (click)="onClickAddOffer()" *ngIf="isAgent()">
+            <div class="inline">
+              <mat-icon>event_note</mat-icon>
+              <p [ngClass]="this.isAddOfferSelected ? 'selected' : 'not-selected'">Adauga un anunt</p></div>
+          </mat-list-item>
+
+          <mat-divider *ngIf="isAgent()"></mat-divider>
+
+          <mat-list-item class="menu-item" (click)="onClickModifyOffer()" *ngIf="isAgent()">
+            <div class="inline">
+              <mat-icon>edit</mat-icon>
+              <p [ngClass]="this.isModifyOfferSelected ? 'selected' : 'not-selected'">Modifica un anunt</p></div>
+          </mat-list-item>
+
+        </mat-list>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="right">
+
+    <div *ngIf="this.isMyProfileSelected" class="form-container">
+
+      <div class="title">
+        <label>Informatiile mele</label>
+      </div>
+
+      <div class="form">
+        <form>
+          <div class="info-item">
+            <label class="form-label" for="name">Nume si Prenume</label>
+            <div>
+              <input type="text" id="name" name="name" [disabled]="!editing"
+                     [(ngModel)]="this.modifiedUser.name" [maxLength]="20"></div>
+          </div>
+
+          <div class="info-item">
+            <label class="form-label" for="email">Email</label>
+            <div>
+              <input type="text" id="email" name="email"
+                     [disabled]="!editing" [(ngModel)]="this.modifiedUser.email" [maxLength]="30"></div>
+          </div>
+
+          <div class="info-item">
+            <label class="form-label" for="preferred">Tipuri de locuinte vizate</label>
+            <div>
+              <select id="preferred" name="preferred" [disabled]="!editing" [(ngModel)]="this.preferenceSelected">
+                <option [ngValue]="-1">
+                  Adauga...
+                </option>
+                <option *ngFor="let id of types" [ngValue]="id-1">
+                  {{ typesLabels[id] }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div *ngFor="let pref of user.preferences; let i = index">
+            <div class="pref-list">
+              <p>{{typesLabels[types[pref]]}}</p>
+              <span (click)="onClickDeletePrefered(i)">
+                <mat-icon>close</mat-icon>
+              </span>
+            </div>
+          </div>
+
+          <div>
+            <button *ngIf="!editing" mat-button class="edit-btn" (click)="onClickEdit()">
+              <mat-icon>edit</mat-icon>
+              Editeaza
+            </button>
+            <button *ngIf="editing" mat-button class="edit-btn" (click)="onClickAnuleaza()">
+              <mat-icon>close</mat-icon>
+              Anuleaza
+            </button>
+            <button mat-button class="edit-btn" (click)="onClickSave()" [disabled]="!editing">
+              <mat-icon>save</mat-icon>
+              Salveaza
+            </button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+
+    <div *ngIf="this.isMyOffersSelected" class="form-container">
+
+      <div class="title">
+        <label>Ofertele mele</label>
+      </div>
+
+      <div class="filter-select" [formGroup]="form2">
+        <label class="form-label" for="type2">Tipul locuintei</label>
+        <select id="type2" (change)="filterMyOffers($event)" [formControl]="form2.controls.type">
+          <option *ngFor="let id of types" [ngValue]="id">
+            {{ typesLabels[id] }}
+          </option>
+        </select>
+      </div>
+
+      <div class="row">
+
+        <div class="column-news" *ngIf="my_offers.length == 0">
+          <p class="indisponible">Nu ai postat nicio oferta...</p>
+        </div>
+
+        <div class="column-news" *ngIf="my_offers.length != 0">
+          <div class="inline2" *ngFor="let offer of my_offers">
+            <mat-card id="small-card">
+
+              <img class="img" src="{{offer.img_path}}">
+              <div class="details">
+                <div>
+                  <p class="price">{{offer.price}}</p>
+                  <mat-icon>euro_symbol</mat-icon>
+                </div>
+                <p class="describe">{{offer.description}}</p>
+                <div class="icon"
+                     *ngIf="offer.type == 1 || offer.type == 2 || offer.type == 3 || offer.type == 4 || offer.type == 5">
+                  <mat-icon>aspect_ratio</mat-icon>
+                  <p class="small-details">{{offer.square_meters}}</p>
+                  <mat-icon>stairs</mat-icon>
+                  <p class="small-details">{{offer.floor}}</p>
+                </div>
+                <div class="icon" *ngIf="offer.type == 6 || offer.type == 7 || offer.type == 8">
+                  <mat-icon>aspect_ratio</mat-icon>
+                  <p class="small-details">{{offer.square_meters}}</p>
+                  <mat-icon>dashboard</mat-icon>
+                  <p class="small-details">{{offer.rooms}}</p>
+                </div>
+                <p class="location">{{offer.city}}, {{offer.zone}}</p>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div *ngIf="this.isFavoriteSelected" class="form-container">
+
+      <div class="title">
+        <label>Oferte favorite</label>
+      </div>
+
+      <div class="row">
+
+        <div class="column-news" *ngIf="my_favorites.length == 0">
+          <p class="indisponible">Nu ai oferte favorite...</p>
+        </div>
+
+        <div class="column-news" *ngIf="my_favorites.length != 0">
+          <div class="inline2" *ngFor="let fav of my_favorites">
+            <mat-card id="small-card">
+
+              <img class="img" src="{{fav.img_path}}">
+              <div class="details">
+                <div>
+                  <p class="price">{{fav.price}}</p>
+                  <mat-icon>euro_symbol</mat-icon>
+                </div>
+                <p class="describe">{{fav.description}}</p>
+                <div class="icon"
+                     *ngIf="fav.type == 1 || fav.type == 2 || fav.type == 3 || fav.type == 4 || fav.type == 5">
+                  <mat-icon>aspect_ratio</mat-icon>
+                  <p class="small-details">{{fav.square_meters}}</p>
+                  <mat-icon>stairs</mat-icon>
+                  <p class="small-details">{{fav.floor}}</p>
+                </div>
+                <div class="icon" *ngIf="fav.type == 6 || fav.type == 7 || fav.type == 8">
+                  <mat-icon>aspect_ratio</mat-icon>
+                  <p class="small-details">{{fav.square_meters}}</p>
+                  <mat-icon>dashboard</mat-icon>
+                  <p class="small-details">{{fav.rooms}}</p>
+                </div>
+                <p class="location">{{fav.city}}, {{fav.zone}}</p>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div *ngIf="this.isAddOfferSelected" class="form-container">
+      <div class="title">
+        <label>Adauga un anunt</label>
+      </div>
+
+      <div class="form">
+        <form [formGroup]="form">
+          <div>
+            <select id="transaction_type" [formControl]="form.controls.transaction_type">
+              <option *ngFor="let id of trasactionTypes" [ngValue]="id">
+                {{ transactionTypesLabels[id] }}
+              </option>
+            </select>
+          </div>
+          <div>
+            <select id="type" [formControl]="form.controls.type" (change)="updateDisabledFields($event)">
+              <option *ngFor="let id of types" [ngValue]="id">
+                {{ typesLabels[id] }}
+              </option>
+            </select>
+          </div>
+
+          <div>
+            <label class="form-label" for="descriere">Descriere</label>
+            <div><input type="text" id="descriere" [formControl]="form.controls.description" name="descriere"></div>
+          </div>
+          <div>
+            <label class="form-label" for="suprafata">Suprafata</label>
+            <div><input type="text" id="suprafata" [formControl]="form.controls.square_meters" name="suprafata"></div>
+          </div>
+          <div>
+            <label class="form-label" for="oras">Oras</label>
+            <div><input type="text" id="oras" [formControl]="form.controls.city" name="oras"></div>
+          </div>
+          <div>
+            <label class="form-label" for="zona">Zona</label>
+            <div><input type="text" id="zona" [formControl]="form.controls.zone" name="zona"></div>
+          </div>
+
+          <div>
+            <label class="form-label" for="etaj">Etaj</label>
+            <div><input type="text" id="etaj" [formControl]="form.controls.floor" name="etaj"></div>
+          </div>
+          <div>
+            <label class="form-label" for="camere">Numar Camere</label>
+            <div><input type="text" id="camere" [formControl]="form.controls.rooms" name="camere">
+            </div>
+          </div>
+          <div>
+            <label class="form-label" for="pret">Pret</label>
+            <div><input type="text" id="pret" [formControl]="form.controls.price" name="pret"></div>
+          </div>
+
+          <div>
+            <div [innerHtml]='msg' *ngIf="msg" style="color: red;"></div>
+            <div><img [src]="url" *ngIf="url" class="image"></div>
+            <p>
+              <input type="file" (change)="selectFile($event)">
+            </p>
+          </div>
+
+          <button mat-button class="edit-btn" (click)="onClickAddOfferBtn()">
+            <mat-icon>save</mat-icon>
+            Adauga
+          </button>
+        </form>
+      </div>
+    </div>
+
+
+    <div *ngIf="this.isModifyOfferSelected" class="form-container">
+      <div class="title">
+        <label>Modifica sau sterge un anunt</label>
+      </div>
+
+      <div class="filter-select" [formGroup]="form1">
+        <label class="form-label" for="type2">Tipul locuintei</label>
+        <select id="type2" (change)="filterByType($event)" [formControl]="form1.controls.type">
+          <option *ngFor="let id of types" [ngValue]="id">
+            {{ typesLabels[id] }}
+          </option>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="column-news">
+          <div class="inline2" *ngFor="let offer of offers">
+            <mat-card id="small-card">
+
+              <img class="img" src="{{offer.img_path}}">
+              <div class="details">
+                <div>
+                  <p class="price">{{offer.price}}</p>
+                  <mat-icon>euro_symbol</mat-icon>
+                  <mat-icon class="right-icons" (click)="openEditDialog($event, offer)">edit</mat-icon>
+                  <mat-icon class="right-icons" (click)="openDeleteDeviceDialog($event, offer.id)">delete</mat-icon>
+                </div>
+                <p class="describe">{{offer.description}}</p>
+                <div class="icon"
+                     *ngIf="offer.type == 1 || offer.type == 2 || offer.type == 3 || offer.type == 4 || offer.type == 5">
+                  <mat-icon>aspect_ratio</mat-icon>
+                  <p class="small-details">{{offer.square_meters}}</p>
+                  <mat-icon>stairs</mat-icon>
+                  <p class="small-details">{{offer.floor}}</p>
+                </div>
+                <div class="icon" *ngIf="offer.type == 6 || offer.type == 7 || offer.type == 8">
+                  <mat-icon>aspect_ratio</mat-icon>
+                  <p class="small-details">{{offer.square_meters}}</p>
+                  <mat-icon>dashboard</mat-icon>
+                  <p class="small-details">{{offer.rooms}}</p>
+                </div>
+                <p class="location">{{offer.city}}, {{offer.zone}}</p>
+              </div>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,26 @@
+.title{
+  color: black;
+}
+
+.mat-dialog-title {
+  border-bottom: 2px solid #FFA6AD
+}
+
+.ok-button{
+  background-color: #0051CB;
+  color: white;
+}
+
+.dialog-content{
+  color: black;
+}
+
+.btn{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.container{
+  padding: 20px;
+  text-align: center;
+}

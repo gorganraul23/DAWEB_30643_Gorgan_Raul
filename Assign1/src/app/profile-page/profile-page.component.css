@@ -1,0 +1,276 @@
+.container{
+  min-height: 91%;
+  width: 100%;
+  display: inline-flex;
+  background-color: white;
+}
+
+.left, .right{
+  width: 25%;
+  background-color: rgba(205,205,205,0.37);
+}
+
+.left{
+  padding-top: 3%;
+  display: block;
+}
+
+.right{
+  width: 75%;
+  margin-left: 1%;
+}
+
+.form-container{
+  width: 100%;
+  height: 100%;
+  background-color: rgba(228,228,228,0.37);
+  padding-top: 3%;
+  /*padding-left: 5%;*/
+}
+
+.form{
+  border-radius: 5px;
+  justify-content: center;
+  padding-left: 4%;
+}
+
+.title {
+  color: black;
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: left;
+  padding-left: 4%;
+  padding-top: 4%;
+  padding-bottom: 4%;
+}
+
+input[type=text], input[type=password]{
+  width: 60%;
+  padding: 1%;
+  margin: 10px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  box-sizing: border-box;
+  font-size: 20px;
+}
+
+.edit-btn, .logout-btn, .delete_button {
+  width: 15%;
+  background-color: #0051CB;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: "Helvetica", sans-serif;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 3%;
+  align-self: center;
+}
+.logout-btn{
+  width: 75%;
+  font-size: 20px;
+  margin-left: 0;
+}
+.delete_button{
+  width: 20%;
+  float: right;
+  margin-right: 5%;
+}
+
+.edit-btn:hover, .logout-btn:hover, .delete_button:hover {
+  background-color: #130888
+}
+
+.button, .button-logout{
+  width: 100%;
+  justify-content: left;
+  display: flex;
+  flex-direction: column;
+}
+.button-logout{
+  justify-content: center;
+  text-align: center;
+}
+
+.form-label, .name-label{
+  color: black;
+  font-size:1.1rem;
+  font-family: "Calibri", sans-serif;
+}
+.name-label{
+  font-size:1.8rem;
+  font-weight: bold;
+  padding-top: 10%;
+}
+
+.circle{
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background: white;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 500;
+  border : 5px solid #0051CB;
+}
+
+.initials{
+  padding-top: 45%;
+}
+
+.left-menu{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-item{
+  padding-top: 3%;
+  width: 100%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+mat-list{
+  width: 80%;
+  padding-top: 3%;
+  justify-content: center;
+  align-items: center;
+}
+
+.inline{
+  display: inline-flex;
+}
+
+input[type=text]{
+  padding-left: 20px;
+}
+
+.selected{
+  color: #0051CB;
+  font-weight: 600;
+}
+
+.not-selected{
+  color: black;
+}
+
+select{
+  width: 60%;
+  height: 30px;
+  border-radius: 20px;
+  color: black;
+  margin-top: 1%;
+  margin-bottom: 2%;
+  padding: 3px 3px 3px 1%;
+  font-size: 20px;
+}
+
+
+
+.row{
+  width: 100%;
+  display: inline-block;
+}
+
+mat-card{
+  width: 450px;
+  height: 430px;
+}
+
+.img{
+  height: 60%;
+  width: 100%;
+}
+
+.inline2, .price, .small-details{
+  display: inline-block;
+}
+.inline2{
+  flex: 1 0 21%;
+  margin: 5px;
+  padding-top: 0.5%;
+}
+
+#arrow, #arrow2{
+  scale: 1.5;
+}
+
+.price{
+  font-size: 2rem;
+  margin-right: 2%;
+  margin-bottom: 3%;
+}
+
+.details{
+  padding-left: 4%;
+  padding-top: 4%;
+}
+
+.describe, .location{
+  font-size: 1.2rem;
+}
+.small-details{
+  font-size: 1rem;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.location{
+  color: grey;
+}
+
+.icon{
+  display: flex;
+  align-items: flex-start;
+}
+
+#small-card{
+  width: 350px;
+  height: 400px;
+}
+
+.column-news{
+  padding: 2%;
+  justify-content: space-between;
+  display: grid;
+  flex-wrap: wrap;
+  grid-template-columns: auto auto auto;
+}
+
+.favorite{
+  padding-left: 50%;
+}
+
+.image{
+  width: 10%;
+  height: 10%;
+}
+
+.indisponible{
+  font-size: 1.3rem;
+  padding-left: 3.5%;
+}
+
+.right-icons{
+  float: right;
+  padding-right: 15px;
+}
+
+.info-item{
+  padding-top: 1%;
+}
+
+.pref-list{
+  display: inline-flex;
+}
+
+.filter-select{
+  padding-left: 4%;
+  display: grid;
+}

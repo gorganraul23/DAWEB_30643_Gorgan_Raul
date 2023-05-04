@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="title">
+    <label>Calendar programari</label>
+  </div>
+
+  <div class="row">
+
+    <div class="left">
+      <ejs-calendar
+        [(ngModel)]='selectedDate'
+        name="picker"
+        (valueChange)="onDateSelected($event)">
+      </ejs-calendar>
+    </div>
+
+    <div class="right">
+      <div *ngFor="let reservation of reservations">
+
+        <!--        <div class="item">-->
+        <!--          <label class="form-label">Rezervat de:</label>-->
+        <!--          <label class="text-label"> {{getUserFromId(reservation.user_id)}}</label>-->
+        <!--        </div>-->
+        <div class="item">
+          <label class="form-label">Data si ora:</label>
+          <div><label class="text-label"> {{convertDate(reservation.date_time)}}</label></div>
+        </div>
+
+        <hr>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="title">
+    <label>Statistici</label>
+  </div>
+
+  <div class="canvas-container">
+    <canvas baseChart #baseChart="base-chart" width="850" height="240"
+            [type]="'line'"
+            [data]="lineChartData"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend">
+    </canvas>
+  </div>
+
+</div>
+

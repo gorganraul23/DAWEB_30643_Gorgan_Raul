@@ -1,0 +1,51 @@
+<div class="background">
+
+  <div class="search-bar">
+    <mat-grid-list cols="7">
+      <mat-grid-tile></mat-grid-tile>
+      <mat-grid-tile>
+        <div class="select-item">
+          <select>
+            <option *ngFor="let type of types" [value]="type">
+              {{type}}
+            </option>
+          </select>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <div class="select-item">
+          <select>
+            <option *ngFor="let type of propertyTypes" [value]="type">
+              {{type}}
+            </option>
+          </select>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="select-item">
+          <select>
+            <option *ngFor="let location of locations" [value]="location">
+              {{location}}
+            </option>
+          </select>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <div class="select-item">
+          <select>
+            <option *ngFor="let zone of zones" [value]="zone">
+              {{zone}}
+            </option>
+          </select>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <button mat-button class="btn">Cauta</button>
+      </mat-grid-tile>
+      <mat-grid-tile></mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

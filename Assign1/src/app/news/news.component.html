@@ -1,0 +1,77 @@
+<div class="promovate">
+
+  <div>
+    <p class="header">Anunturi promovate</p>
+  </div>
+
+  <div class="row">
+    <div class="column1">
+      <mat-icon id="arrow">arrow_back_ios</mat-icon>
+    </div>
+
+    <div class="column2">
+      <div class="inline" *ngFor="let house of houses.slice(index, index+2)">
+        <mat-card>
+
+          <img class="img" src="assets/news/house.jpg">
+          <div class="details">
+            <div>
+              <p class="price">{{house.price}}</p>
+              <mat-icon>euro_symbol</mat-icon>
+            </div>
+            <p class="describe">{{house.describe}}</p>
+            <div class="icon">
+              <mat-icon>aspect_ratio</mat-icon>
+              <p class="small-details">{{house.surface}}</p>
+              <mat-icon>dashboard</mat-icon>
+              <p class="small-details">{{house.rooms}}</p>
+            </div>
+            <p class="location">{{house.location}}</p>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="column1">
+      <mat-icon id="arrow2">arrow_forward_ios</mat-icon>
+    </div>
+  </div>
+
+</div>
+
+<div class="noutati">
+  <div>
+    <p class="header">Anunturi noi</p>
+  </div>
+
+  <div class="row">
+
+    <div class="column-news-empty" *ngIf="this.news_list.length == 0">
+      <p class="indisponible">Nu sunt oferte noi disponibile...</p>
+    </div>
+
+    <div class="column-news" *ngIf="this.news_list.length != 0">
+
+      <div class="inline" *ngFor="let offer of news_list">
+        <mat-card id="small-card">
+          <img class="img" src="{{offer.img_path}}">
+          <div class="details">
+            <div>
+              <p class="price">{{offer.price}}</p>
+              <mat-icon>euro_symbol</mat-icon>
+              <mat-icon class="favorite">favorite_outline</mat-icon>
+            </div>
+            <p class="describe">{{offer.description}}</p>
+            <div class="icon">
+              <mat-icon>aspect_ratio</mat-icon>
+              <p class="small-details">{{offer.square_meters}}</p>
+              <mat-icon>stairs</mat-icon>
+              <p class="small-details">{{offer.floor}}</p>
+            </div>
+            <p class="location">{{offer.city}}, {{offer.zone}}</p>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
